@@ -1,0 +1,39 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <title>Tache</title>
+</head>
+<body>
+    <br>
+    
+    <div class="tache">
+        <a href="{% url 'ajouter' user.id %}">Ajouter tache</a>
+        <div class="tete">
+            <p id="nom">NOM</p>
+            <p id="statut">STATUT</p>
+        </div>
+        <hr>
+        <div class="element">
+            {% for tache in taches %}
+            <a href="{% url 'affiche' tache.id %}"><p id="nom">{{tache.nom}}</p></a>
+            <a href="{% url 'modifier' tache.id %}">
+                <p id="statut">
+                    {% if not tache.finish%}
+                    En cours
+                    {% else %}
+                    Terminer
+                    {% endif %}
+                </p>
+            </a>
+                {% empty %}
+                <p>Aucune taches pour le moment</p>
+                {% endfor %}
+                <a href="{% url 'index' %}">Retour</a>
+        </div>
+    </div>
+</body>
+</html>

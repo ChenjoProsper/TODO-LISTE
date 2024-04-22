@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tache.nom }}</title>
+</head>
+<body>
+    <p>Nom de la tache : {{ tache.nom }}</p> <br>
+    <p>Description: {{ tache.description }}</p> <br>
+    <p>Etat: {{ etat }} </p><br>
+
+    <a href="{% url 'supprimer' tache.id %}">Supprimer ?</a>
+    <a href=" {% url 'tache' user.id %}">Retour</a>
+</body>
+</html>

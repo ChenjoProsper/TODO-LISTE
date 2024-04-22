@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <title>ACCUEIL</title>
+</head> 
+<body>
+    <div class="index">
+        {% if user.is_authenticated %}
+            <h1 id="welcome">Bienvenu {{user.username}}</h1>
+            <a href="{% url 'tache' user.id %}" id="mesTaches"><h2>Vos Taches</h2></a>
+            <a href="{% url 'logout' %}" id="meDeconnecter"><h2>Vous deconnectez</h2></a>
+        {% else %}
+        <h1 id="welcome">Bienvenu sur cette <span id="todo">todo liste</span> </h1>
+            <a href="{% url 'login' %}" id="mesTaches"><h2>Connection</h2></a>
+            <a href="{% url 'register' %}" id="meDeconnecter"><h2>Insciption</h2></a>
+        {% endif %}
+    </div>
+</body>
+</html>
